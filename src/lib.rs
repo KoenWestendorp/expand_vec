@@ -1,3 +1,12 @@
+//! A growable array that expands to provide a mutable reference to items beyond the stored
+//! collection.
+//!
+//! The [`ExpandVec::expand_get_mut`] method allows for mutably indexing into single items of the
+//! collection and always getting a valid reference to an item. If necessary, the inner collection
+//! is expanded to precisely fit the index only if that index is beyond the length of the
+//! collection. A mutable reference to that new item is returned. When the index does fit within the
+//! existing collection, a mutable reference to that item is simply returned, without altering the
+//! inner collection.
 use std::slice::SliceIndex;
 
 /// A growable array that expands to provide a mutable reference to items beyond the stored
